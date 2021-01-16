@@ -5,17 +5,23 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.example.bluetoothmonitor.adapter.BtConsts;
 
 public class MainActivity extends AppCompatActivity {
 
     private MenuItem menuItem;
     private BluetoothAdapter bluetoothAdapter;
     private final int ENABLE_REQUEST = 1;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
     //инизиализация
     private void initialization() {
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        sharedPreferences = getSharedPreferences(BtConsts.MY_PREFERENCE, Context.MODE_PRIVATE);
+      //  Log.d("Log", "Bt name :" + sharedPreferences.getString(BtConsts.MAC_KEY, "блютуз не выбран"));
     }
 
     private void enableBluetooth() {
