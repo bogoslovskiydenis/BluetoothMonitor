@@ -17,9 +17,11 @@ import java.util.List;
 
 public class BtAdapter extends ArrayAdapter<ListItem> {
 
+    private List<ListItem> mainList;
 
     public BtAdapter(@NonNull Context context, int resource, List<ListItem> btList) {
         super(context, resource, btList);
+        mainList = btList;
     }
 
     @NonNull
@@ -37,13 +39,13 @@ public class BtAdapter extends ArrayAdapter<ListItem> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.textView.setText("название устройства");
-        viewHolder.checkBox.setChecked(true);
+        viewHolder.textView.setText(mainList.get(position).getBtName());
+       // viewHolder.checkBox.setChecked(true);
 
-        return super.getView(position, convertView, parent);
+        return convertView;
     }
 
-    class ViewHolder {
+    static class ViewHolder {
 
         TextView textView;
         CheckBox checkBox;
