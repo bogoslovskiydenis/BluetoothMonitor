@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initialization();
+        //разкомитить для телефона , т.к на эмуляторе нет адаптера
+       // initialization();
     }
 
     //создание кнопки Блютуз
@@ -29,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.main_menu , menu);
         menuItem = menu.findItem(R.id.bt_button);
-        setBtnIcon();
+        //разкомитить для телефона , т.к на эмуляторе нет адаптера
+       // setBtnIcon();
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -44,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
                 bluetoothAdapter.disable();
                 menuItem.setIcon(R.drawable.ic_bt_enable);
             }
+            //запуск ListMenu
+        } else if (item.getItemId() == R.id.id_memu){
+            Intent i = new Intent(MainActivity.this, BtListActivity.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);

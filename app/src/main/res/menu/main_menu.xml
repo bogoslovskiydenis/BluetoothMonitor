@@ -7,8 +7,15 @@
 <item android:title="BtEnable"
     android:id="@+id/bt_button"
     android:icon="@drawable/ic_bt_enable"
+    android:orderInCategory="100"
     app:showAsAction="ifRoom"
     />
+    <item android:title="BtList"
+        android:id="@+id/id_memu"
+        android:icon="@drawable/ic_menu"
+        android:orderInCategory="200"
+        app:showAsAction="ifRoom"
+        />
 
 
 </menu>
