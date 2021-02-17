@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.bluetoothmonitor.R;
+import com.example.bluetoothmonitor.constant.BtConsts;
+import com.example.bluetoothmonitor.model.ListItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,22 +32,25 @@ public class BtAdapter extends ArrayAdapter<ListItem> {
         sharedPreferences = context.getSharedPreferences(BtConsts.MY_PREFERENCE, Context.MODE_PRIVATE);
     }
 
+    //шаблон
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         ViewHolder viewHolder;
-        if (convertView == null) {
 
+        //создается первый раз
+        if (convertView == null) {
             viewHolder = new ViewHolder();
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.bt_list_item, null, false);
             viewHolder.textView = convertView.findViewById(R.id.textView);
-            viewHolder.checkBoxSelected = convertView.findViewById(R.id.checkBox);
+            viewHolder.checkBoxSelected = convertView.findViewById(R.id.checkBoxSelected);
             convertView.setTag(viewHolder);
 
             listViewHolders.add(viewHolder);
-
-        } else {
+        }
+        //получаем object ViewHolder
+        else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
@@ -69,6 +74,7 @@ public class BtAdapter extends ArrayAdapter<ListItem> {
         editor.putString(BtConsts.MAC_KEY,  mainList.get(pos).getMacAdress());
         editor.apply();
     }
+
 
     static class ViewHolder {
 

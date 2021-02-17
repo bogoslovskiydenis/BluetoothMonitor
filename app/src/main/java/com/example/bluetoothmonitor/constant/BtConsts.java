@@ -1,4 +1,4 @@
-package com.example.bluetoothmonitor.adapter;
+package com.example.bluetoothmonitor.constant;
 
 public class BtConsts {
     public static final String MY_PREFERENCE = "my_pref";

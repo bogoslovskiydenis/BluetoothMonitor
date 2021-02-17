@@ -1,4 +1,4 @@
-package com.example.bluetoothmonitor;
+package com.example.bluetoothmonitor.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -10,8 +10,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.example.bluetoothmonitor.R;
 import com.example.bluetoothmonitor.adapter.BtAdapter;
-import com.example.bluetoothmonitor.adapter.ListItem;
+import com.example.bluetoothmonitor.model.ListItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class BtListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bt_list);
+        initialization();
     }
 
     @Override
@@ -50,6 +52,7 @@ public class BtListActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listView);
 
+        //Проверка , заполняем Блютуз item
 //        List<ListItem> list = new ArrayList<>();
 //        ListItem item = new ListItem();
 //        item.setBtName("BT 133131321");
@@ -69,6 +72,7 @@ public class BtListActivity extends AppCompatActivity {
        Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
 
        if(pairedDevices.size()>0){
+           //paired devices. Get name and address paired devices
            list.clear();
            for(BluetoothDevice device: pairedDevices){
                ListItem item = new ListItem();
@@ -78,7 +82,6 @@ public class BtListActivity extends AppCompatActivity {
            }
            adapter.notifyDataSetChanged();
        }
-
 
    }
 

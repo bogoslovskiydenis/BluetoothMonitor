@@ -1,4 +1,4 @@
-package com.example.bluetoothmonitor;
+package com.example.bluetoothmonitor.activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,12 +9,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.bluetoothmonitor.adapter.BtConsts;
+import com.example.bluetoothmonitor.R;
+import com.example.bluetoothmonitor.constant.BtConsts;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         menuItem = menu.findItem(R.id.bt_button);
         //разкомитить для телефона , т.к на эмуляторе нет адаптера
-        setBtnIcon();
+       setBtnIcon();
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -58,11 +58,11 @@ public class MainActivity extends AppCompatActivity {
             if (bluetoothAdapter.isEnabled()) {
                 Intent i = new Intent(MainActivity.this, BtListActivity.class);
                 startActivity(i);
-            } else {
+            }
+            else {
                 Toast.makeText(this, "Включи блютуз", Toast.LENGTH_SHORT).show();
             }
         }
-
         return super.onOptionsItemSelected(item);
     }
 

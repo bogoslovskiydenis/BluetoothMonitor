@@ -1,8 +1,8 @@
-package com.example.bluetoothmonitor.adapter;
+package com.example.bluetoothmonitor.model;
 
 public class ListItem {
     private String btName;
-    private String MacAdress;
+    private String macAddress;
 
     public String getBtName() {
         return btName;
@@ -13,10 +13,10 @@ public class ListItem {
     }
 
     public String getMacAdress() {
-        return MacAdress;
+        return macAddress;
     }
 
     public void setMacAdress(String macAdress) {
-        MacAdress = macAdress;
+        this.macAddress = macAdress;
     }
 }
