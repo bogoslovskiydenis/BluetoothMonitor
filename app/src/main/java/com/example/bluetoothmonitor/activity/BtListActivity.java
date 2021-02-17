@@ -77,7 +77,7 @@ public class BtListActivity extends AppCompatActivity {
            for(BluetoothDevice device: pairedDevices){
                ListItem item = new ListItem();
                item.setBtName(device.getName());
-               item.setMacAdress(device.getAddress());//mac
+               item.setMacAddress(device.getAddress());//mac
                list.add(item);
            }
            adapter.notifyDataSetChanged();

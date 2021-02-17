@@ -12,11 +12,11 @@ public class ListItem {
         this.btName = btName;
     }
 
-    public String getMacAdress() {
+    public String getMacAddress() {
         return macAddress;
     }
 
-    public void setMacAdress(String macAdress) {
-        this.macAddress = macAdress;
+    public void setMacAddress(String macAddress) {
+        this.macAddress = macAddress;
     }
 }

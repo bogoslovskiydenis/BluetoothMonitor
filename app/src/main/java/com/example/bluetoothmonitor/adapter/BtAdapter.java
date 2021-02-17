@@ -28,6 +28,7 @@ public class BtAdapter extends ArrayAdapter<ListItem> {
     public BtAdapter(@NonNull Context context, int resource, List<ListItem> btList) {
         super(context, resource, btList);
         mainList = btList;
+        //список куда добавляем элементы
         listViewHolders = new ArrayList<>();
         sharedPreferences = context.getSharedPreferences(BtConsts.MY_PREFERENCE, Context.MODE_PRIVATE);
     }
@@ -46,7 +47,7 @@ public class BtAdapter extends ArrayAdapter<ListItem> {
             viewHolder.textView = convertView.findViewById(R.id.textView);
             viewHolder.checkBoxSelected = convertView.findViewById(R.id.checkBoxSelected);
             convertView.setTag(viewHolder);
-
+            //Доступ с любой позиции
             listViewHolders.add(viewHolder);
         }
         //получаем object ViewHolder
@@ -65,13 +66,13 @@ public class BtAdapter extends ArrayAdapter<ListItem> {
        // viewHolder.checkBoxSelected.setChecked(true);
         if (sharedPreferences.getString(BtConsts.MAC_KEY, "выбрать подключение")
                 .equals(mainList.get(position)
-                        .getMacAdress()))viewHolder.checkBoxSelected.setChecked(true);
+                        .getMacAddress()))viewHolder.checkBoxSelected.setChecked(true);
         return convertView;
     }
 
     private void savePreference(int pos){
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(BtConsts.MAC_KEY,  mainList.get(pos).getMacAdress());
+        editor.putString(BtConsts.MAC_KEY,  mainList.get(pos).getMacAddress());
         editor.apply();
     }
 
