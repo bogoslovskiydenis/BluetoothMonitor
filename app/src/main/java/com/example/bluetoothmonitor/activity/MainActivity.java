@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private MenuItem menuItem;
     private BluetoothAdapter bluetoothAdapter;
-    private final int ENABLE_REQUEST = 1;
+    private final int ENABLE_REQUEST = 15;
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         menuItem = menu.findItem(R.id.bt_button);
         //разкомитить для телефона , т.к на эмуляторе нет адаптера
-       setBtnIcon();
+        setBtnIcon();
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == ENABLE_REQUEST) {
             if (resultCode == RESULT_OK) {
                 setBtnIcon();
@@ -95,9 +94,13 @@ public class MainActivity extends AppCompatActivity {
       //  Log.d("Log", "Bt name :" + sharedPreferences.getString(BtConsts.MAC_KEY, "блютуз не выбран"));
     }
 
+
+    //Enable Bluetooth
     private void enableBluetooth() {
-        Intent i = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-        startActivityForResult(i, ENABLE_REQUEST);
+        if (!bluetoothAdapter.isEnabled()) {
+            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBtIntent, ENABLE_REQUEST);
+        }
     }
 
 
